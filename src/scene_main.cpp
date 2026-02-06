@@ -4,9 +4,15 @@
 
 #include "scene_main.h"
 
+#include "player.h"
+
 void SceneMain::init() {
     m_world_size = m_game.getScreenSize() * 3.0f;
-    m_camera_position = glm::vec2(-100.f);
+    m_camera_position = glm::vec2(m_world_size/2.0f - m_game.getScreenSize().x/2.0f);
+
+    m_player = new Player();
+    m_player->init();
+    m_player->setPosition(m_world_size/2.0f);
 }
 
 void SceneMain::handle_events(SDL_Event& event) {
@@ -14,15 +20,17 @@ void SceneMain::handle_events(SDL_Event& event) {
 }
 
 void SceneMain::update(float dt) {
-    m_camera_position += glm::vec2(100.f,100.0f) * dt;
+    m_player->update(dt);
 }
 
 void SceneMain::render() {
     renderBackground();
+    m_player->render();
 }
 
 void SceneMain::clean() {
-
+    m_player->clean();
+    delete m_player;
 }
 
 void SceneMain::renderBackground() {

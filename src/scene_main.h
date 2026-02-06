@@ -7,8 +7,10 @@
 
 #include "core/scene.h"
 
+class Player;
+
 class SceneMain : public Scene {
-    glm::vec2 m_world_size = glm::vec2(0);
+    Player *m_player = nullptr;
 public:
     SceneMain() = default;
     virtual ~SceneMain() = default;

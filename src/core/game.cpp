@@ -80,9 +80,6 @@ void Game::handle_events() {
             case SDL_EVENT_QUIT:
                 m_is_running = false;
                 break;
-            case SDL_EVENT_KEY_DOWN:
-                std::cout << "Key Down" << std::endl;
-                break;
             default:
                 m_current_scene->handle_events(event);
         }

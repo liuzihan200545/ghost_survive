@@ -50,6 +50,10 @@ public:
         return m_screen_size;
     }
 
+    Scene* getCurrentScene() const {
+        return m_current_scene;
+    }
+
     // 工具函数
     void drawGrid(const glm::vec2& top_left, const glm::vec2& bottom_right, float grid_width, SDL_FColor fcolor);
 

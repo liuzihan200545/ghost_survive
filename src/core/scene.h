@@ -12,6 +12,7 @@
 class Scene: public Object {
 protected:
     glm::vec2 m_camera_position = glm::vec2(0); // 相机位置
+    glm::vec2 m_world_size = glm::vec2(0);
     std::vector<Object*> m_objects; // 场景中的物体
 public:
     Scene() = default;
@@ -22,6 +23,30 @@ public:
     virtual void update(float dt) override{};
     virtual void render() override{};
     virtual void clean() override{};
+
+    glm::vec2 worldToScreen(const glm::vec2 &world_position) {
+        return world_position - m_camera_position;
+    }
+
+    glm::vec2 ScreenToWorld(const glm::vec2 &screen_position) {
+        return screen_position + m_camera_position;
+    }
+
+    // getter and setter of camera
+    glm::vec2 getCameraPosition() const {
+        return m_camera_position;
+    }
+
+    void setCameraPosition(const glm::vec2 &camera_position);
+
+    // getter and setter of world size
+    glm::vec2 getWorldSize() const {
+        return m_world_size;
+    }
+
+    void setWorldSize(const glm::vec2 &world_size) {
+        m_world_size = world_size;
+    }
 
 };
 
