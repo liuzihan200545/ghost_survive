@@ -6,10 +6,7 @@
 #define HELLO_GAME_H
 
 #include <string>
-#include <SDL3/SDL.h>
-#include <SDL3_image/SDL_image.h>
-#include <SDL3_mixer/SDL_mixer.h>
-#include <SDL3_ttf/SDL_ttf.h>
+#include "asset_store.h"
 #include <glm/glm.hpp>
 
 class Scene;
@@ -19,8 +16,11 @@ private:
     Game() = default; //私有构造函数
     glm::vec2 m_screen_size = glm::vec2(0);
 
+    AssetStore* m_asset_store = nullptr;
+
     SDL_Window* m_window = nullptr;
     SDL_Renderer* m_renderer = nullptr;
+    MIX_Mixer* m_mixer = nullptr;
 
     bool m_is_running = true;
 
@@ -52,6 +52,10 @@ public:
 
     Scene* getCurrentScene() const {
         return m_current_scene;
+    }
+
+    AssetStore* getAssetStore() const {
+        return m_asset_store;
     }
 
     // 工具函数

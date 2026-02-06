@@ -49,8 +49,8 @@ void Game::init(std::string title, int width, int height) {
     // 4. 创建混合器设备 (Mixer Device)
     // SDL3_mixer 现在支持多设备，通过 MIX_CreateMixerDevice 创建
     // 参数 0 使用默认音频设备，NULL 使用默认音频参数 (通常为 48000Hz, Float32)
-    MIX_Mixer *mixer = MIX_CreateMixerDevice(SDL_AUDIO_DEVICE_DEFAULT_PLAYBACK, NULL);
-    if (!mixer) {
+    m_mixer = MIX_CreateMixerDevice(SDL_AUDIO_DEVICE_DEFAULT_PLAYBACK, NULL);
+    if (!m_mixer) {
         SDL_LogError(SDL_LOG_CATEGORY_APPLICATION, "创建 Mixer 失败: %s\n", SDL_GetError());
         return;
     }
@@ -67,8 +67,13 @@ void Game::init(std::string title, int width, int height) {
 
     std::cout << "SDL初始化完毕" << std::endl;
 
+    // 控制帧率
     m_frame_delay = 1000000000 / m_fps;
 
+    // 创建资源管理器
+    m_asset_store = new AssetStore(m_renderer,m_mixer);
+
+    // 创建主场景
     m_current_scene = new SceneMain();
     m_current_scene->init();
 }
@@ -108,6 +113,9 @@ void Game::clean() {
     }
     if (m_window) {
         SDL_DestroyWindow(m_window);
+    }
+    if (m_mixer) {
+        MIX_DestroyMixer(m_mixer);
     }
     MIX_Quit();
     TTF_Quit();
