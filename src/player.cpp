@@ -3,17 +3,23 @@
 //
 
 #include "player.h"
+
+#include <iostream>
+
 #include "core/scene.h"
 
 void Player::init() {
-    m_max_speed = 250.0f;
+    Actor::init();
+    std::cout << m_type << std::endl;
+    m_max_speed = 500.0f;
 }
 
 void Player::handle_events(SDL_Event &event) {
-
+    Actor::handle_events(event);
 }
 
 void Player::update(float dt) {
+    Actor::update(dt);
     KeyBoardControl();
     m_velocity *= 0.9f;
     move(dt);
@@ -21,11 +27,12 @@ void Player::update(float dt) {
 }
 
 void Player::render() {
+    Actor::render();
     m_game.drawBoundary(m_render_position,m_render_position+glm::vec2(20.0f),5.0f,{1,0,0,0});
 }
 
 void Player::clean() {
-
+    Actor::clean();
 }
 
 void Player::KeyBoardControl() {

@@ -12,25 +12,25 @@ void SceneMain::init() {
 
     m_player = new Player();
     m_player->init();
+    addChild(m_player);
     m_player->setPosition(m_world_size/2.0f);
 }
 
 void SceneMain::handle_events(SDL_Event& event) {
-
+    Scene::handle_events(event);
 }
 
 void SceneMain::update(float dt) {
-    m_player->update(dt);
+    Scene::update(dt);
 }
 
 void SceneMain::render() {
     renderBackground();
-    m_player->render();
+    Scene::render();
 }
 
 void SceneMain::clean() {
-    m_player->clean();
-    delete m_player;
+    Scene::clean();
 }
 
 void SceneMain::renderBackground() {

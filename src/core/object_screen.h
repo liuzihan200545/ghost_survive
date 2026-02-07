@@ -12,6 +12,10 @@ class ObjectScreen : public Object {
 protected:
     glm::vec2 m_render_position = glm::vec2(0);
 public:
+    virtual void init() override{
+        m_type = ObjectType::OBJECT_SCREEN;
+    }
+
     glm::vec2 getRenderPosition() const {
         return m_render_position;
     }

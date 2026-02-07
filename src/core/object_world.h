@@ -11,6 +11,10 @@ class ObjectWorld: public ObjectScreen{
 protected:
     glm::vec2 m_position = glm::vec2(0);
 public:
+    virtual void init() override {
+        m_type = ObjectType::OBJECT_WORLD;
+    }
+
     virtual void update(float dt) override;
     void setPosition(const glm::vec2& position);
     virtual void setRenderPosition(const glm::vec2& position) override;
