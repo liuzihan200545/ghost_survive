@@ -19,9 +19,6 @@ public:
     virtual void update(float dt)override;
     virtual void render()override;
     virtual void clean()override;
-
-private:
-    void renderBackground();
 };
 
 #endif //HELLO_SCENE_MAIN_H

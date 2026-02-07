@@ -33,3 +33,7 @@ target_link_libraries(hello PRIVATE
         SDL3_ttf::SDL3_ttf
         SDL3_image::SDL3_image
         glm::glm)
+
+target_compile_definitions(hello PRIVATE
+        $<$<CONFIG:Debug>:MY_DEBUG>
+)
