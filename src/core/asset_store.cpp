@@ -51,7 +51,7 @@ SDL_Texture * AssetStore::getImage(const std::string &file_path) {
         loadImage(file_path);
         it = m_textures.find(file_path);
     }
-    if (it != m_textures.end()) {
+    if (it == m_textures.end()) {
         SDL_LogError(SDL_LOG_CATEGORY_APPLICATION, "Failed to get texture: %s", SDL_GetError());
         return nullptr;
     }
@@ -77,7 +77,7 @@ MIX_Audio * AssetStore::getMusic(const std::string &file_path) {
         loadMusic(file_path);
         it = m_music.find(file_path);
     }
-    if (it != m_music.end()) {
+    if (it == m_music.end()) {
         SDL_LogError(SDL_LOG_CATEGORY_APPLICATION, "Failed to get music: %s", SDL_GetError());
         return nullptr;
     }
@@ -90,7 +90,7 @@ TTF_Font * AssetStore::getFont(const std::string &file_path, int font_size) {
         loadFont(file_path, font_size);
         it = m_fonts.find(file_path+std::to_string(font_size));
     }
-    if (it != m_fonts.end()) {
+    if (it == m_fonts.end()) {
         SDL_LogError(SDL_LOG_CATEGORY_APPLICATION, "Failed to get font: %s", SDL_GetError());
         return nullptr;
     }

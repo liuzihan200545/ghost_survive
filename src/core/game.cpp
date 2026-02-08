@@ -4,6 +4,7 @@
 
 #include "game.h"
 #include "../scene_main.h"
+#include "../affiliate/sprite.h"
 
 #include <iostream>
 
@@ -147,4 +148,14 @@ void Game::drawBoundary(const glm::vec2 &top_left, const glm::vec2 &bottom_right
         SDL_RenderRect(m_renderer, &rect);
     }
     SDL_SetRenderDrawColorFloat(m_renderer,0,0,0,1);
+}
+
+void Game::renderTexture(const Texture &texture, const glm::vec2 &position, const glm::vec2 &size) {
+    SDL_FRect dst_rect = {
+        position.x,
+        position.y,
+        size.x,
+        size.y
+    };
+    SDL_RenderTextureRotated(m_renderer,texture.texture, &texture.src_rect, &dst_rect, texture.angle, nullptr, texture.is_flip ? SDL_FLIP_HORIZONTAL : SDL_FLIP_NONE);
 }

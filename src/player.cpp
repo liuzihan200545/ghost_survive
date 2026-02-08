@@ -6,12 +6,18 @@
 
 #include <iostream>
 
+#include "affiliate/sprite.h"
 #include "core/scene.h"
 
 void Player::init() {
     Actor::init();
     std::cout << m_type << std::endl;
     m_max_speed = 500.0f;
+    auto sprite = new Sprite();
+    sprite->set_texture(Texture("assets/sprite/ghost-idle.png"));
+    sprite->set_m_parent(this);
+    sprite->set_offset({0.0f,0.0f});
+    addChild(sprite);
 }
 
 void Player::handle_events(SDL_Event &event) {

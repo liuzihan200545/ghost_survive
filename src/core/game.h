@@ -10,6 +10,7 @@
 #include <glm/glm.hpp>
 
 class Scene;
+struct Texture;
 
 class Game {
 private:
@@ -62,6 +63,8 @@ public:
     void drawGrid(const glm::vec2& top_left, const glm::vec2& bottom_right, float grid_width, SDL_FColor fcolor);
 
     void drawBoundary(const glm::vec2& top_left, const glm::vec2& bottom_right, float boundary_width, SDL_FColor fcolor);
+
+    void renderTexture(const Texture& texture, const glm::vec2& position, const glm::vec2& size);
 };
 
 
