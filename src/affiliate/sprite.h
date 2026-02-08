@@ -43,6 +43,23 @@ public:
     void setScale(float scale) {
         m_size *= scale;
     }
+
+    void setAngle(float angle) {
+        m_texture.angle = angle;
+    }
+
+    [[nodiscard]]float getAngle() const {
+        return m_texture.angle;
+    }
+
+    void setFlip(bool flip) {
+        m_texture.is_flip = flip;
+    }
+
+    [[nodiscard]]bool getFlip() const {
+        return m_texture.is_flip;
+    }
+
 };
 
 

@@ -6,9 +6,12 @@
 #define HELLO_PLAYER_H
 
 #include "core/actor.h"
+#include "affiliate/spriteAnim.h"
 
 class Player : public Actor {
-
+    SpriteAnim* m_sprite_idle = nullptr;
+    SpriteAnim* m_sprite_move  = nullptr;
+    bool is_moving = false;
 public:
     virtual void init() override;
     virtual void handle_events(SDL_Event &event) override;
@@ -21,6 +24,10 @@ public:
     void move(float dt);
 
     void syncCamera();
+
+    void checkState();
+
+    void changeState(bool is_moving);
 
 };
 

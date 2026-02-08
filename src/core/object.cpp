@@ -7,25 +7,33 @@
 
 void Object::handle_events(SDL_Event &event) {
     for (auto& child : m_children) {
-        child->handle_events(event);
+        if (child -> get_is_active()) {
+            child->handle_events(event);
+        }
     }
 }
 
 void Object::update(float dt) {
     for (auto& child : m_children) {
-        child->update(dt);
+        if (child -> get_is_active()) {
+            child->update(dt);
+        }
     }
 }
 
 void Object::render() {
     for (auto& child : m_children) {
-        child->render();
+        if (child -> get_is_active()) {
+            child->render();
+        }
     }
 }
 
 void Object::clean() {
     for (auto& child : m_children) {
-        child->clean();
+        if (child -> get_is_active()) {
+            child->clean();
+        }
     }
     m_children.clear();
 }

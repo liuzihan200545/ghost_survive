@@ -16,6 +16,7 @@ private:
     float m_frame_timer = 0.0f;
 
 public:
+
     SpriteAnim() = default;
 
     static SpriteAnim* addSpriteAnimChild(ObjectScreen* parent, const std::string& file_path, float scale = 1.0f) {
@@ -54,6 +55,14 @@ public:
 
     void set_fps(const int fps) {
         this->m_fps = fps;
+    }
+
+    [[nodiscard]] float get_frame_timer() const {
+        return m_frame_timer;
+    }
+
+    void set_m_frame_timer(const float m_frame_timer) {
+        this->m_frame_timer = m_frame_timer;
     }
 
     virtual void set_texture(const Texture& texture) override{

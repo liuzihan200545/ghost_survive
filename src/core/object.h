@@ -14,7 +14,17 @@ protected:
     Game& m_game = Game::get_instance();
     std::vector<Object*> m_children;
     ObjectType m_type = ObjectType::NONE;
+    bool m_is_active = true;
+
 public:
+    [[nodiscard]] bool get_is_active() const {
+        return m_is_active;
+    }
+
+    void set_is_active(const bool is_active) {
+        this->m_is_active = is_active;
+    }
+
     Object() = default;
     virtual ~Object() = default;  // 所有的类不在构造函数和析构函数中做任何事
 
@@ -30,6 +40,8 @@ public:
     ObjectType get_type() const {
         return m_type;
     }
+
+
 
 };
 
