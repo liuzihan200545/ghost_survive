@@ -23,15 +23,25 @@ protected:
 public:
     Sprite() = default;
 
+    // main funcs
+
+    static Sprite* addSpriteChild(ObjectScreen* parent, const std::string& file_path, float scale = 1.0f);
+
     virtual void render() override;
+
+    // getter and setter
 
     [[nodiscard]] Texture get_texture() const {
         return m_texture;
     }
 
-    void set_texture(const Texture &texture) {
+    virtual void set_texture(const Texture &texture) {
         this->m_texture = texture;
         this->m_size = glm::vec2{texture.src_rect.w,texture.src_rect.h};
+    }
+
+    void setScale(float scale) {
+        m_size *= scale;
     }
 };
 

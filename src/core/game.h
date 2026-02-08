@@ -27,7 +27,7 @@ private:
 
     uint64_t m_fps = 60;
     uint64_t m_frame_delay = 0;  // 单位 ns
-    float m_dt = 0.0f;
+    float m_dt = 0.0f; // 单位 s
 
     Scene* m_current_scene = nullptr;
 

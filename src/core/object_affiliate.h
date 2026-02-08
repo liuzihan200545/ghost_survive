@@ -14,12 +14,12 @@ protected:
 public:
     // getter and setter
 
-    [[nodiscard]] ObjectScreen * get_m_parent() const {
+    [[nodiscard]] ObjectScreen * get_parent() const {
         return m_parent;
     }
 
-    void set_m_parent(ObjectScreen * const m_parent) {
-        this->m_parent = m_parent;
+    void set_parent(ObjectScreen * const parent) {
+        this->m_parent = parent;
     }
 
     [[nodiscard]] glm::vec2 get_offset() const {

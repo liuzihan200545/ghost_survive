@@ -18,6 +18,7 @@ public:
     float GetMaxSpeed() const { return m_max_speed; }
     void SetVelocity(const glm::vec2& v) { m_velocity = v; }
     void SetMaxSpeed(float v) { m_max_speed = v; }
+    void set_max_speed(float v) { m_max_speed = v; }
 };
 
 
