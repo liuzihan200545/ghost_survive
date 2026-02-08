@@ -20,3 +20,7 @@ void ObjectWorld::setRenderPosition(const glm::vec2 &position) {
     m_render_position = position;
     m_position = m_game.getCurrentScene()->ScreenToWorld(position);
 }
+
+glm::vec2 ObjectWorld::getPosition() const {
+    return m_position;
+}

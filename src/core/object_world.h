@@ -16,8 +16,12 @@ public:
     }
 
     virtual void update(float dt) override;
-    void setPosition(const glm::vec2& position);
+
     virtual void setRenderPosition(const glm::vec2& position) override;
+
+    [[nodiscard]] glm::vec2 getPosition() const;
+
+    void setPosition(const glm::vec2& position);
 };
 
 

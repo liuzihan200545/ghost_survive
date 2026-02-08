@@ -51,13 +51,6 @@ void Player::KeyBoardControl() {
     }
 }
 
-void Player::move(float dt) {
-    setPosition(m_position + m_velocity * dt);
-
-    m_position = glm::clamp(m_position, glm::vec2(0.0f), m_game.getCurrentScene()->getWorldSize());
-
-}
-
 void Player::syncCamera() {
     m_game.getCurrentScene()->setCameraPosition(m_position - m_game.getScreenSize()/2.0f);
 }

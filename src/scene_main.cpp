@@ -3,8 +3,8 @@
 //
 
 #include "scene_main.h"
-
 #include "player.h"
+#include "Enemy.h"
 
 void SceneMain::init() {
     m_world_size = m_game.getScreenSize() * 3.0f;
@@ -14,6 +14,12 @@ void SceneMain::init() {
     m_player->init();
     addChild(m_player);
     m_player->setPosition(m_world_size/2.0f);
+
+    auto enemy = new Enemy();
+    enemy->init();
+    addChild(enemy);
+    enemy->setPosition(m_world_size/2.0f + 200.f);
+    enemy->set_target(m_player);
 }
 
 void SceneMain::handle_events(SDL_Event& event) {

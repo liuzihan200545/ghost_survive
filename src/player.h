@@ -21,8 +21,6 @@ public:
 
     void KeyBoardControl();
 
-    void move(float dt);
-
     void syncCamera();
 
     void checkState();
