@@ -5,7 +5,7 @@
 #include "player.h"
 #include "affiliate/spriteAnim.h"
 #include "core/scene.h"
-#include <iostream>
+#include "raw/states.h"
 
 void Player::init() {
     Actor::init();
@@ -13,8 +13,8 @@ void Player::init() {
     m_sprite_idle = SpriteAnim::addSpriteAnimChild(this,"assets/sprite/ghost-idle.png",2.0f);
     m_sprite_move = SpriteAnim::addSpriteAnimChild(this,"assets/sprite/ghost-move.png",2.0f);
     m_sprite_move->set_is_active(false);
-
     collider_ = Collider::addColliderChild(this, m_sprite_idle->get_size() / 1.6f);
+    states_ = States::addStatesChild(this);
 }
 
 void Player::handle_events(SDL_Event &event) {
@@ -28,6 +28,7 @@ void Player::update(float dt) {
     checkState();
     move(dt);
     syncCamera();
+    //is_alive(); // check if the player is alive
 }
 
 void Player::render() {

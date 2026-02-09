@@ -5,6 +5,7 @@
 #include "Enemy.h"
 #include "affiliate/spriteAnim.h"
 #include "core/scene.h"
+#include "raw/states.h"
 
 void Enemy::aim_target(Player *target) {
     if (target == nullptr) {
@@ -57,6 +58,8 @@ void Enemy::init() {
     anim_current_ = anim_normal_;
 
     collider_ = Collider::addColliderChild(this, anim_current_->get_size());
+
+    states_ = States::addStatesChild(this);
 }
 
 void Enemy::update(float dt) {
@@ -73,10 +76,12 @@ void Enemy::remove() {
 }
 
 void Enemy::attack() {
-
-    if (!collider_ || !target_->get_collider()) return;
+    if ( !target_ ) return;
+    if ( !collider_ || !target_->get_collider() ) return;
 
     if (collider_->is_Colliding(target_->get_collider())) {
-
+        if (states_ && target_->get_states()) {
+            target_->take_damage(states_->get_damage());
+        }
     }
 }

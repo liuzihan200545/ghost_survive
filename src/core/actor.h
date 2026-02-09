@@ -7,22 +7,35 @@
 
 #include "object_world.h"
 
+class States;
 
 class Actor : public ObjectWorld{
 protected:
     glm::vec2 m_velocity = glm::vec2(0.0f);
     float m_max_speed = 100.0f;
+    States *states_ = nullptr;
 public:
     // getter and setter
-    glm::vec2 GetVelocity() const { return m_velocity; }
-    float GetMaxSpeed() const { return m_max_speed; }
-    void SetVelocity(const glm::vec2& v) { m_velocity = v; }
-    void SetMaxSpeed(float v) { m_max_speed = v; }
+    [[nodiscard]] glm::vec2 get_velocity() const { return m_velocity; }
+    [[nodiscard]] float get_max_speed() const { return m_max_speed; }
+    void set_velocity(const glm::vec2& v) { m_velocity = v; }
     void set_max_speed(float v) { m_max_speed = v; }
-
-    void move(float dt) {
-        this->m_position += m_velocity * dt;
+    [[nodiscard]] States *get_states() const {
+        return states_;
     }
+    void set_states(States *states) {
+        states_ = states;
+    }
+
+    // main functions
+    void move(float dt) {
+        this->setPosition(m_position += m_velocity * dt);
+    }
+
+    // game play
+    void take_damage(float damage);
+    bool is_alive() const;
+
 };
 
 
