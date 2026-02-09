@@ -5,6 +5,7 @@
 #include "player.h"
 #include "affiliate/spriteAnim.h"
 #include "core/scene.h"
+#include <iostream>
 
 void Player::init() {
     Actor::init();
@@ -13,7 +14,7 @@ void Player::init() {
     m_sprite_move = SpriteAnim::addSpriteAnimChild(this,"assets/sprite/ghost-move.png",2.0f);
     m_sprite_move->set_is_active(false);
 
-    collider_ = Collider::addColliderChild(this, m_sprite_idle->get_size());
+    collider_ = Collider::addColliderChild(this, m_sprite_idle->get_size() / 1.6f);
 }
 
 void Player::handle_events(SDL_Event &event) {

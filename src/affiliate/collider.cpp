@@ -19,12 +19,13 @@ bool Collider::is_Colliding(Collider *other) {
     return false;
 }
 
-Collider * Collider::addColliderChild(ObjectScreen *parent, glm::vec2 size, Type type) {
+Collider * Collider::addColliderChild(ObjectScreen *parent, glm::vec2 size, Type type, Anchor anchor) {
     auto collider = new Collider();
     collider->init();
     collider->set_parent(parent);
     collider->set_size(size);
     collider->type_ = type;
+    collider->setOffsetByAnchor(anchor);
     parent->addChild(collider);
     return collider;
 }
@@ -32,7 +33,7 @@ Collider * Collider::addColliderChild(ObjectScreen *parent, glm::vec2 size, Type
 void Collider::render() {
 #ifdef MY_DEBUG
     ObjectAffiliate::render();
-    auto pos = m_parent->getRenderPosition();
+    auto pos = m_parent->getRenderPosition() + m_offset;
     m_game.renderCircle(pos,m_size,0.3);
 #endif
 }

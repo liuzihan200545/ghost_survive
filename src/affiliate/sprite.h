@@ -34,7 +34,7 @@ public:
 
     // main funcs
 
-    static Sprite* addSpriteChild(ObjectScreen* parent, const std::string& file_path, float scale = 1.0f);
+    static Sprite* addSpriteChild(ObjectScreen* parent, const std::string& file_path, float scale = 1.0f, Anchor anchor = Anchor::CENTER);
 
     virtual void render() override;
 
@@ -47,10 +47,6 @@ public:
     virtual void set_texture(const Texture &texture) {
         this->m_texture = texture;
         this->m_size = glm::vec2{texture.src_rect.w,texture.src_rect.h};
-    }
-
-    void setScale(float scale) {
-        m_size *= scale;
     }
 
     void setAngle(float angle) {

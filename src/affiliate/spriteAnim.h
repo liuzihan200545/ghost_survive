@@ -21,12 +21,13 @@ public:
 
     SpriteAnim() = default;
 
-    static SpriteAnim* addSpriteAnimChild(ObjectScreen* parent, const std::string& file_path, float scale = 1.0f) {
+    static SpriteAnim* addSpriteAnimChild(ObjectScreen* parent, const std::string& file_path, float scale = 1.0f, Anchor anchor = Anchor::CENTER) {
         auto sprite_anim = new SpriteAnim();
         sprite_anim->init();
         sprite_anim->set_texture(Texture{file_path});
         sprite_anim->setScale(scale);
         sprite_anim->set_parent(parent);
+        sprite_anim->setOffsetByAnchor(anchor);
         parent->addChild(sprite_anim);
         return sprite_anim;
     }
