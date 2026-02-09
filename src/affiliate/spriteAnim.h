@@ -15,6 +15,8 @@ private:
     int m_fps = 10;
     float m_frame_timer = 0.0f;
 
+    bool is_loop_ = true;
+
 public:
 
     SpriteAnim() = default;
@@ -32,7 +34,15 @@ public:
     // main funcs
     virtual void update(float dt) override ;
 
-    // getter and setter
+    // getter and
+    [[nodiscard]] bool get_is_loop() const {
+        return is_loop_;
+    }
+
+    void set_is_loop(bool is_loop) {
+        is_loop_ = is_loop;
+    }
+
     [[nodiscard]] int get_m_current_frame() const {
         return m_current_frame;
     }

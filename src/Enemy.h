@@ -10,23 +10,43 @@
 
 class Enemy : public Actor {
 
-    Player* m_player = nullptr;
+    enum class State {
+        NORMAL,
+        HURT,
+        DIE
+    };
+
+    Player* target_ = nullptr;
+
+    State current_state_ = State::NORMAL;
+
+    SpriteAnim* anim_normal_ = nullptr;
+    SpriteAnim* anim_hurt_ = nullptr;
+    SpriteAnim* anim_die_ = nullptr;
+    SpriteAnim* anim_current_ = nullptr;
+
+    float timer_ = 0.0f;
 
 public:
 
     void aim_target(Player* target);
 
+    void checkState();
+    void changeState(State );
+
     virtual void init() override;
 
     virtual void update(float dt) override;
 
+    void remove();
+
     // getter and setter
     [[nodiscard]] Player * get_target() const {
-        return m_player;
+        return target_;
     }
 
     void set_target(Player * const m_player) {
-        this->m_player = m_player;
+        this->target_ = m_player;
     }
 
 };

@@ -4,6 +4,7 @@
 
 #include "object.h"
 #include <algorithm>
+#include <iostream>
 
 void Object::handle_events(SDL_Event &event) {
     for (auto& child : m_children) {
@@ -14,9 +15,19 @@ void Object::handle_events(SDL_Event &event) {
 }
 
 void Object::update(float dt) {
-    for (auto& child : m_children) {
-        if (child -> get_is_active()) {
-            child->update(dt);
+    for (auto it = m_children.begin(); it != m_children.end();) {
+        auto child = *it;
+        if (child -> get_need_remove()) {
+            std::cout << "Delete and Remove a child--------------------------" << std::endl;
+            it = m_children.erase(it);
+            child->clean();
+            delete child;
+        }
+        else {
+            if (child -> get_is_active()) {
+                child->update(dt);
+            }
+            ++it;
         }
     }
 }

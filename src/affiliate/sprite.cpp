@@ -21,10 +21,7 @@ Sprite * Sprite::addSpriteChild(ObjectScreen *parent, const std::string &file_pa
 
 void Sprite::render() {
     ObjectAffiliate::render();
-    if (m_texture.texture == nullptr) {
-        return;
-    }
-    if (m_parent == nullptr) {
+    if (is_finished_ || !m_texture.texture || !m_parent) {
         return;
     }
     auto pos = m_parent->getRenderPosition() + this->m_offset;

@@ -15,8 +15,17 @@ protected:
     std::vector<Object*> m_children;
     ObjectType m_type = ObjectType::NONE;
     bool m_is_active = true;
+    bool need_remove_ = false;
 
 public:
+    [[nodiscard]] bool get_need_remove() const {
+        return need_remove_;
+    }
+
+    void set_need_remove(bool need_remove) {
+        need_remove_ = need_remove;
+    }
+
     [[nodiscard]] bool get_is_active() const {
         return m_is_active;
     }

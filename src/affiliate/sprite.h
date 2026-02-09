@@ -19,8 +19,17 @@ struct Texture {
 class Sprite : public ObjectAffiliate {
 protected:
     Texture m_texture;
+    bool is_finished_ = false;
 
 public:
+    [[nodiscard]] bool get_is_finished() const {
+        return is_finished_;
+    }
+
+    void set_is_finished(bool is_finished) {
+        is_finished_ = is_finished;
+    }
+
     Sprite() = default;
 
     // main funcs
