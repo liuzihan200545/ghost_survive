@@ -25,7 +25,7 @@ class Enemy : public Actor {
     SpriteAnim* anim_die_ = nullptr;
     SpriteAnim* anim_current_ = nullptr;
 
-    float timer_ = 0.0f;
+    Collider* collider_ = nullptr;
 
 public:
 
@@ -39,6 +39,8 @@ public:
     virtual void update(float dt) override;
 
     void remove();
+
+    void attack();
 
     // getter and setter
     [[nodiscard]] Player * get_target() const {

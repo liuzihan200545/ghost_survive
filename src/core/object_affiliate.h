@@ -10,7 +10,8 @@
 class ObjectAffiliate : public Object{
 protected:
     ObjectScreen* m_parent = nullptr;
-
+    glm::vec2 m_offset = glm::vec2(0,0);
+    glm::vec2 m_size = glm::vec2(0,0);
 public:
     // getter and setter
 
@@ -37,10 +38,6 @@ public:
     void set_size(const glm::vec2 &size) {
         this->m_size = size;
     }
-
-protected:
-    glm::vec2 m_offset = glm::vec2(0,0);
-    glm::vec2 m_size = glm::vec2(0,0);
 
 public:
     // getters and setters

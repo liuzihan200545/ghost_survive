@@ -12,7 +12,17 @@ class Player : public Actor {
     SpriteAnim* m_sprite_idle = nullptr;
     SpriteAnim* m_sprite_move  = nullptr;
     bool is_moving = false;
+    Collider* collider_ = nullptr;
+
 public:
+    [[nodiscard]] Collider * get_collider() const {
+        return collider_;
+    }
+
+    void set_collider(Collider *collider) {
+        collider_ = collider;
+    }
+
     virtual void init() override;
     virtual void handle_events(SDL_Event &event) override;
     virtual void update(float dt) override;

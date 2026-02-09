@@ -24,6 +24,10 @@ public:
         this->m_render_position = _render_position;
     }
 
+    virtual glm::vec2 getPosition() const {
+        return glm::vec2(0);
+    }
+
 };
 
 #endif //HELLO_OBJECT_SCREEN_H

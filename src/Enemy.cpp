@@ -55,20 +55,28 @@ void Enemy::init() {
     anim_die_->set_is_loop(false);
 
     anim_current_ = anim_normal_;
+
+    collider_ = Collider::addColliderChild(this, anim_current_->get_size());
 }
 
 void Enemy::update(float dt) {
     Actor::update(dt);
     aim_target(target_);
     move(dt);
-    //
-    changeState(State::DIE);
-    this->remove();
-    
+    attack();
 }
 
 void Enemy::remove() {
     if (anim_die_->get_is_finished()) {
         need_remove_ = true;
+    }
+}
+
+void Enemy::attack() {
+
+    if (!collider_ || !target_->get_collider()) return;
+
+    if (collider_->is_Colliding(target_->get_collider())) {
+
     }
 }

@@ -12,6 +12,8 @@ void Player::init() {
     m_sprite_idle = SpriteAnim::addSpriteAnimChild(this,"assets/sprite/ghost-idle.png",2.0f);
     m_sprite_move = SpriteAnim::addSpriteAnimChild(this,"assets/sprite/ghost-move.png",2.0f);
     m_sprite_move->set_is_active(false);
+
+    collider_ = Collider::addColliderChild(this, m_sprite_idle->get_size());
 }
 
 void Player::handle_events(SDL_Event &event) {

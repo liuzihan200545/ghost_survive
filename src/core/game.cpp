@@ -159,3 +159,16 @@ void Game::renderTexture(const Texture &texture, const glm::vec2 &position, cons
     };
     SDL_RenderTextureRotated(m_renderer,texture.texture, &texture.src_rect, &dst_rect, texture.angle, nullptr, texture.is_flip ? SDL_FLIP_HORIZONTAL : SDL_FLIP_NONE);
 }
+
+void Game::renderCircle(const glm::vec2 &position, const glm::vec2 &size, float alpha) {
+    auto texture = m_asset_store->getImage("assets/UI/circle.png");
+    SDL_FRect dst_rect = {
+        position.x,
+        position.y,
+        size.x,
+        size.y
+    };
+    SDL_SetTextureAlphaModFloat(texture,alpha);
+    SDL_RenderTexture(m_renderer,texture,NULL,&dst_rect);
+}
+
