@@ -8,17 +8,17 @@
 
 void ObjectWorld::update(float dt) {
     ObjectScreen::update(dt);
-    m_render_position = m_game.getCurrentScene()->worldToScreen(m_position);
+    m_render_position = m_game.get_current_scene()->worldToScreen(m_position);
 }
 
 void ObjectWorld::set_position(const glm::vec2 &position) {
     m_position = position;
-    m_render_position = m_game.getCurrentScene()->worldToScreen(position);
+    m_render_position = m_game.get_current_scene()->worldToScreen(position);
 }
 
 void ObjectWorld::set_render_position(const glm::vec2 &position) {
     m_render_position = position;
-    m_position = m_game.getCurrentScene()->ScreenToWorld(position);
+    m_position = m_game.get_current_scene()->ScreenToWorld(position);
 }
 
 glm::vec2 ObjectWorld::get_position() const {

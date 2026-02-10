@@ -4,13 +4,13 @@
 
 #include "scene_main.h"
 #include "player.h"
-#include "Enemy.h"
-#include "world/effect.h"
+#include "screen/ui_mouse.h"
 #include "spawner.h"
 
 void SceneMain::init() {
-    m_world_size = m_game.getScreenSize() * 3.0f;
-    m_camera_position = glm::vec2(m_world_size/2.0f - m_game.getScreenSize().x/2.0f);
+    //SDL_HideCursor();
+    m_world_size = m_game.get_screen_size() * 3.0f;
+    m_camera_position = glm::vec2(m_world_size/2.0f - m_game.get_screen_size().x/2.0f);
 
     player_ = new Player();
     player_->init();
@@ -21,6 +21,8 @@ void SceneMain::init() {
     spawner_->init();
     spawner_->set_target(player_);
     addChild(spawner_);
+
+    ui_mouse_ = UIMouse::addUIMouseChild(this,"assets/UI/29.png","assets/UI/30.png",1.0f,Anchor::CENTER);
 
     /*auto enemy = new Enemy();
     enemy->init();

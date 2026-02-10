@@ -34,6 +34,10 @@ private:
 
     std::mt19937 gen_ = std::mt19937(std::random_device{}());
 
+    //鼠标状态
+    glm::vec2 mouse_position_ = glm::vec2(0);
+    SDL_MouseButtonFlags mouse_buttons_ = 0;
+
 public:
     Game(const Game&) = delete;
     Game& operator=(const Game&) = delete;
@@ -50,15 +54,32 @@ public:
     void render();
     void clean();
 
-    glm::vec2 getScreenSize() const {
+    // getter and setter
+    glm::vec2 get_mouse_position() const {
+        return mouse_position_;
+    }
+
+    SDL_MouseButtonFlags get_mouse_buttons() const {
+        return mouse_buttons_;
+    }
+
+    void set_mouse_position(const glm::vec2& position) {
+        mouse_position_ = position;
+    }
+
+    void set_mouse_buttons(SDL_MouseButtonFlags buttons) {
+        mouse_buttons_ = buttons;
+    }
+
+    glm::vec2 get_screen_size() const {
         return m_screen_size;
     }
 
-    Scene* getCurrentScene() const {
+    Scene* get_current_scene() const {
         return m_current_scene;
     }
 
-    AssetStore* getAssetStore() const {
+    AssetStore* get_asset_store() const {
         return m_asset_store;
     }
 

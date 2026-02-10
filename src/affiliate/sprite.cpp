@@ -5,7 +5,7 @@
 #include "sprite.h"
 
 Texture::Texture(const std::string &file_path) {
-    texture = Game::get_instance().getAssetStore()->getImage(file_path);
+    texture = Game::get_instance().get_asset_store()->getImage(file_path);
     SDL_GetTextureSize(texture,&src_rect.w,&src_rect.h);
 }
 

@@ -57,7 +57,7 @@ void Player::KeyBoardControl() {
 }
 
 void Player::syncCamera() {
-    m_game.getCurrentScene()->setCameraPosition(m_position - m_game.getScreenSize()/2.0f);
+    m_game.get_current_scene()->setCameraPosition(m_position - m_game.get_screen_size()/2.0f);
 }
 
 void Player::checkState() {
@@ -95,7 +95,7 @@ void Player::changeState(bool is_moving) {
 
 void Player::check_is_dead() {
     if (!states_->is_alive()) {
-        m_game.getCurrentScene()->safe_add_child(effect_);
+        m_game.get_current_scene()->safe_add_child(effect_);
         effect_->set_position(this->get_position());
         //this->set_need_remove(true);
         this->set_is_active(false);

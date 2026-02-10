@@ -15,9 +15,9 @@ void Spawner::update(float dt) {
             timer_ = 0.0f;
             for (int i = 0; i < num_; i++) {
                 // spawn the enemy
-                auto pos = m_game.random_vec2(m_game.getCurrentScene()->getCameraPosition(),m_game.getCurrentScene()->getCameraPosition()+m_game.getScreenSize());
+                auto pos = m_game.random_vec2(m_game.get_current_scene()->getCameraPosition(),m_game.get_current_scene()->getCameraPosition()+m_game.get_screen_size());
                 auto enemy = Enemy::addEnemyChild(nullptr, pos, target_);
-                Effect::addEffectChild(m_game.getCurrentScene(),"assets/effect/184_3.png",pos,1.0f,enemy);
+                Effect::addEffectChild(m_game.get_current_scene(),"assets/effect/184_3.png",pos,1.0f,enemy);
             }
         }
     }

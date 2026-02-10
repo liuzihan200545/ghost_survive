@@ -29,7 +29,7 @@ void Effect::check_finish() {
     if (sprite_ && sprite_->get_is_finished()) {
         need_remove_ = true;
         if (next_object_) {
-            m_game.getCurrentScene()->safe_add_child(next_object_);
+            m_game.get_current_scene()->safe_add_child(next_object_);
         }
     }
 }
