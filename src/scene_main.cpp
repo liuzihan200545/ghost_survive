@@ -6,22 +6,28 @@
 #include "player.h"
 #include "Enemy.h"
 #include "world/effect.h"
+#include "spawner.h"
 
 void SceneMain::init() {
     m_world_size = m_game.getScreenSize() * 3.0f;
     m_camera_position = glm::vec2(m_world_size/2.0f - m_game.getScreenSize().x/2.0f);
 
-    m_player = new Player();
-    m_player->init();
-    addChild(m_player);
-    m_player->set_position(m_world_size/2.0f);
+    player_ = new Player();
+    player_->init();
+    addChild(player_);
+    player_->set_position(m_world_size/2.0f);
 
-    auto enemy = new Enemy();
+    spawner_ = new Spawner();
+    spawner_->init();
+    spawner_->set_target(player_);
+    addChild(spawner_);
+
+    /*auto enemy = new Enemy();
     enemy->init();
     enemy->set_position(m_world_size/2.0f + 200.f);
     enemy->set_target(m_player);
 
-    Effect::addEffectChild(this,"assets/effect/184_3.png",m_world_size/2.0f + glm::vec2(200.f),1.5f, enemy);
+    Effect::addEffectChild(this,"assets/effect/184_3.png",m_world_size/2.0f + glm::vec2(200.f),1.5f, enemy);*/
 }
 
 void SceneMain::handle_events(SDL_Event& event) {

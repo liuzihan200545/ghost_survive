@@ -7,10 +7,11 @@
 
 #include "core/scene.h"
 
-class Player;
+class Player; class Spawner;
 
 class SceneMain : public Scene {
-    Player *m_player = nullptr;
+    Player *player_ = nullptr;
+    Spawner *spawner_ = nullptr;
 public:
     SceneMain() = default;
     virtual ~SceneMain() = default;

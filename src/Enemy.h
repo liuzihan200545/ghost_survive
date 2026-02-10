@@ -29,6 +29,8 @@ class Enemy : public Actor {
 
 public:
 
+    static Enemy* addEnemyChild(Object* parent, const glm::vec2& pos, Player* target);
+
     void aim_target(Player* target);
 
     void checkState();

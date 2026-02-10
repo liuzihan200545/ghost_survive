@@ -7,6 +7,15 @@
 #include "core/scene.h"
 #include "raw/states.h"
 
+Enemy * Enemy::addEnemyChild(Object *parent, const glm::vec2 &pos, Player* target) {
+    Enemy* enemy = new Enemy();
+    enemy->init();
+    enemy->set_position(pos);
+    enemy->set_target(target);
+    if (parent) parent->addChild(enemy);
+    return enemy;
+}
+
 void Enemy::aim_target(Player *target) {
     if (target == nullptr) {
         return;
@@ -46,9 +55,9 @@ void Enemy::changeState(State new_state) {
 
 void Enemy::init() {
     Actor::init();
-    anim_normal_ = SpriteAnim::addSpriteAnimChild(this,"assets/sprite/ghost-Sheet.png",2.0f);
-    anim_hurt_ = SpriteAnim::addSpriteAnimChild(this,"assets/sprite/ghostHurt-Sheet.png",2.0f);
-    anim_die_ = SpriteAnim::addSpriteAnimChild(this,"assets/sprite/ghostDead-Sheet.png",2.0f);
+    anim_normal_ = SpriteAnim::addSpriteAnimChild(this,"assets/sprite/ghost-Sheet.png",3.0f);
+    anim_hurt_ = SpriteAnim::addSpriteAnimChild(this,"assets/sprite/ghostHurt-Sheet.png",3.0f);
+    anim_die_ = SpriteAnim::addSpriteAnimChild(this,"assets/sprite/ghostDead-Sheet.png",3.0f);
     anim_hurt_->set_is_active(false);
     anim_die_->set_is_active(false);
 

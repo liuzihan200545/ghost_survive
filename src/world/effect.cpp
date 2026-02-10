@@ -20,7 +20,7 @@ Effect * Effect::addEffectChild(Object *parent, const std::string &file_path, gl
     effect->next_object_ = next_object;
     effect->set_position(pos);
     if (parent) {
-        parent->addChild(effect);
+        parent->safe_add_child(effect);
     }
     return effect;
 }

@@ -8,6 +8,7 @@
 #include <string>
 #include "asset_store.h"
 #include <glm/glm.hpp>
+#include <random>
 
 class Scene;
 struct Texture;
@@ -30,6 +31,8 @@ private:
     float m_dt = 0.0f; // 单位 s
 
     Scene* m_current_scene = nullptr;
+
+    std::mt19937 gen_ = std::mt19937(std::random_device{}());
 
 public:
     Game(const Game&) = delete;
@@ -67,6 +70,30 @@ public:
     void renderTexture(const Texture& texture, const glm::vec2& position, const glm::vec2& size);
 
     void renderCircle(const glm::vec2& position, const glm::vec2 &size, float alpha);
+
+    // 随机数函数
+    float random_float(float min, float max) {
+        std::uniform_real_distribution<float> dist(min, max);
+        return dist(gen_);
+    }
+
+    int random_int(int min, int max) {
+        std::uniform_int_distribution<int> dist(min, max);
+        return dist(gen_);
+    }
+
+    glm::vec2 random_vec2(glm::vec2 min, glm::vec2 max) {
+        std::uniform_real_distribution<float> dist_x(min.x, max.x);
+        std::uniform_real_distribution<float> dist_y(min.y, max.y);
+        return {dist_x(gen_), dist_y(gen_)};
+    }
+
+    glm::ivec2 random_ivec2(glm::ivec2 min, glm::ivec2 max) {
+        std::uniform_int_distribution<int> dist_x(min.x, max.x);
+        std::uniform_int_distribution<int> dist_y(min.y, max.y);
+        return {dist_x(gen_), dist_y(gen_)};
+    }
+
 };
 
 
