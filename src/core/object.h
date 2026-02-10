@@ -55,7 +55,9 @@ public:
         return m_type;
     }
 
-
+    void set_type(ObjectType type) {
+        m_type = type;
+    }
 
 };
 

@@ -34,6 +34,8 @@ public:
 
     void set_position(const glm::vec2& position);
 
+    virtual void take_damage(float damage) {}
+
 
 };
 

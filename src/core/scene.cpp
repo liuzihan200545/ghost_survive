@@ -85,9 +85,11 @@ void Scene::clean() {
 
 void Scene::addChild(Object *child) {
     switch (child->get_type()) {
+
         case ObjectType::OBJECT_SCREEN:
             m_children_screen.push_back(dynamic_cast<ObjectScreen *>(child));
             break;
+        case ObjectType::ENEMY:
         case ObjectType::OBJECT_WORLD:
             m_children_world.push_back(dynamic_cast<ObjectWorld *>(child));
             break;
@@ -102,6 +104,7 @@ void Scene::removeChild(Object *child) {
         case ObjectType::OBJECT_SCREEN:
             m_children_screen.erase(std::remove(m_children_screen.begin(), m_children_screen.end(), child), m_children_screen.end());
             break;
+        case ObjectType::ENEMY:
         case ObjectType::OBJECT_WORLD:
             m_children_world.erase(std::remove(m_children_world.begin(), m_children_world.end(), child), m_children_world.end());
             break;

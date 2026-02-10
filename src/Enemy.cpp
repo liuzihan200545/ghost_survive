@@ -69,6 +69,8 @@ void Enemy::init() {
     collider_ = Collider::addColliderChild(this, anim_current_->get_size());
 
     states_ = States::addStatesChild(this);
+
+    set_type(ObjectType::ENEMY);
 }
 
 void Enemy::update(float dt) {
@@ -89,7 +91,7 @@ void Enemy::remove() {
 void Enemy::attack() {
     if ( !collider_ || !target_ || !target_->get_collider() ) return;
 
-    if (collider_->is_Colliding(target_->get_collider())) {
+    if (collider_->is_colliding(target_->get_collider())) {
         if (states_ && target_->get_states()) {
             target_->take_damage(states_->get_damage());
         }

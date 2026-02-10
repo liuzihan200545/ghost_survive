@@ -7,8 +7,13 @@
 
 #include "../core/object_affiliate.h"
 
+
+class Spell;
+
 class Collider : public ObjectAffiliate {
 protected:
+    // 友元
+    friend Spell;
     enum class Type {
         CIRCLE,  // size_的x轴为直径  默认 y == x
         RECTANGLE,
@@ -16,7 +21,7 @@ protected:
 
     Type type_ = Type::CIRCLE;
 public:
-    bool is_Colliding(Collider* other);
+    bool is_colliding(Collider* other);
 
     static Collider * addColliderChild(ObjectScreen* parent,glm::vec2 size,Type type = Type::CIRCLE, Anchor anchor = Anchor::CENTER);
 

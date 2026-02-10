@@ -12,6 +12,7 @@ enum class ObjectType {
     NONE,
     OBJECT_SCREEN,
     OBJECT_WORLD,
+    ENEMY
 };
 
 enum class Anchor
@@ -33,6 +34,7 @@ inline std::ostream& operator<<(std::ostream& os, const ObjectType& type) {
         case ObjectType::NONE:          os << "NONE"; break;
         case ObjectType::OBJECT_SCREEN: os << "OBJECT_SCREEN"; break;
         case ObjectType::OBJECT_WORLD:  os << "OBJECT_WORLD"; break;
+        case ObjectType::ENEMY:        os << "ENEMY"; break;
         default:                        os << "UNKNOWN"; break;
     }
     return os;

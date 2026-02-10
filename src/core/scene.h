@@ -53,6 +53,16 @@ public:
         m_world_size = world_size;
     }
 
+    // getter and setter of child_world
+    const std::vector<ObjectWorld*>& get_children_world() {
+        return m_children_world;
+    }
+
+
+    // getter and setter of child_screen
+    const std::vector<ObjectScreen*>& get_children_screen() {
+        return m_children_screen;
+    }
 };
 
 

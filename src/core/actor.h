@@ -33,7 +33,7 @@ public:
     }
 
     // game play
-    void take_damage(float damage);
+    void take_damage(float damage) override;
     bool is_alive() const;
 
 };

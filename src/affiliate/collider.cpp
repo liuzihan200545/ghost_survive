@@ -4,7 +4,7 @@
 
 #include "collider.h"
 
-bool Collider::is_Colliding(Collider *other) {
+bool Collider::is_colliding(Collider *other) {
     if (type_ == Type::CIRCLE && other->type_ == Type::CIRCLE) {
         auto point1 = m_parent->get_position()+ m_offset;
         auto point2 = other->m_parent->get_position()+ other->m_offset;
@@ -30,9 +30,11 @@ Collider * Collider::addColliderChild(ObjectScreen *parent, glm::vec2 size, Type
 }
 
 void Collider::render() {
-#ifdef MY_DEBUG
     ObjectAffiliate::render();
+#ifdef MY_DEBUG
     auto pos = m_parent->getRenderPosition() + m_offset;
     m_game.renderCircle(pos,m_size,0.3);
 #endif
+
+
 }
