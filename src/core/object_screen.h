@@ -20,11 +20,11 @@ public:
         return m_render_position;
     }
 
-    virtual void setRenderPosition(const glm::vec2& _render_position) {
+    virtual void set_render_position(const glm::vec2& _render_position) {
         this->m_render_position = _render_position;
     }
 
-    virtual glm::vec2 getPosition() const {
+    virtual glm::vec2 get_position() const {
         return glm::vec2(0);
     }
 

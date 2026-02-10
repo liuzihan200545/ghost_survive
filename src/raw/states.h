@@ -18,7 +18,7 @@ protected:
     float max_mana_ = 100.0f;
     float damage_ = 40.0f;
     float mana_regen_ = 10.0f;
-    float invisible_time_ = 5.0f; // seconds
+    float invisible_time_ = 2.0f; // seconds
     float invisible_timer = 0.0f; // seconds
     bool is_alive_ = true;
     bool is_invisible_ = false;

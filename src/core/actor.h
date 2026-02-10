@@ -29,7 +29,7 @@ public:
 
     // main functions
     void move(float dt) {
-        this->setPosition(m_position += m_velocity * dt);
+        this->set_position(m_position += m_velocity * dt);
     }
 
     // game play

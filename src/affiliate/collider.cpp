@@ -6,8 +6,8 @@
 
 bool Collider::is_Colliding(Collider *other) {
     if (type_ == Type::CIRCLE && other->type_ == Type::CIRCLE) {
-        auto point1 = m_parent->getPosition() + m_size / 2.0f + m_offset;
-        auto point2 = other->m_parent->getPosition() + other->m_size / 2.0f + other->m_offset;
+        auto point1 = m_parent->get_position() + m_size / 2.0f + m_offset;
+        auto point2 = other->m_parent->get_position() + other->m_size / 2.0f + other->m_offset;
 
         if (glm::length(point2 - point1) < (m_size.x + other->m_size.x) / 2.0f) {
             return true;

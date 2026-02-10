@@ -15,6 +15,7 @@ void Player::init() {
     m_sprite_move->set_is_active(false);
     collider_ = Collider::addColliderChild(this, m_sprite_idle->get_size() / 1.6f);
     states_ = States::addStatesChild(this);
+    effect_ = Effect::addEffectChild(nullptr,"assets/effect/1764.png",glm::vec2(0),2.0f);
 }
 
 void Player::handle_events(SDL_Event &event) {
@@ -28,7 +29,7 @@ void Player::update(float dt) {
     checkState();
     move(dt);
     syncCamera();
-    //is_alive(); // check if the player is alive
+    check_is_dead();
 }
 
 void Player::render() {
@@ -89,6 +90,15 @@ void Player::changeState(bool is_moving) {
         m_sprite_move->set_is_active(false);
         m_sprite_idle->set_m_current_frame(m_sprite_move->get_m_current_frame());
         m_sprite_idle->set_m_frame_timer(m_sprite_move->get_frame_timer());
+    }
+}
+
+void Player::check_is_dead() {
+    if (!states_->is_alive()) {
+        m_game.getCurrentScene()->safe_add_child(effect_);
+        effect_->set_position(this->get_position());
+        //this->set_need_remove(true);
+        this->set_is_active(false);
     }
 }
 

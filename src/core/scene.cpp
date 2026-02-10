@@ -28,6 +28,7 @@ void Scene::update(float dt) {
             it = m_children_world.erase(it);
             child->clean();
             delete child;
+            child = nullptr;
         }
         else {
             if (child->get_is_active()) {
@@ -43,6 +44,7 @@ void Scene::update(float dt) {
             it = m_children_screen.erase(it);
             child->clean();
             delete child;
+            child = nullptr;
         }
         else {
             if (child->get_is_active()) {
@@ -90,7 +92,7 @@ void Scene::addChild(Object *child) {
             m_children_world.push_back(dynamic_cast<ObjectWorld *>(child));
             break;
         default:
-            m_children.push_back(dynamic_cast<Object *>(child));
+            children_.push_back(dynamic_cast<Object *>(child));
             break;
     }
 }
@@ -104,7 +106,7 @@ void Scene::removeChild(Object *child) {
             m_children_world.erase(std::remove(m_children_world.begin(), m_children_world.end(), child), m_children_world.end());
             break;
         default:
-            m_children.erase(std::remove(m_children.begin(), m_children.end(), child), m_children.end());
+            children_.erase(std::remove(children_.begin(), children_.end(), child), children_.end());
             break;
     }
 }

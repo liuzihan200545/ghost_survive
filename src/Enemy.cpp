@@ -11,7 +11,7 @@ void Enemy::aim_target(Player *target) {
     if (target == nullptr) {
         return;
     }
-    auto direction = target->getPosition() - this->getPosition();
+    auto direction = target->get_position() - this->get_position();
     direction = glm::normalize(direction);
     m_velocity = direction * m_max_speed;
 }
@@ -64,9 +64,11 @@ void Enemy::init() {
 
 void Enemy::update(float dt) {
     Actor::update(dt);
-    aim_target(target_);
-    move(dt);
-    attack();
+    if (target_->is_alive()) {
+        aim_target(target_);
+        move(dt);
+        attack();
+    }
 }
 
 void Enemy::remove() {
@@ -76,8 +78,7 @@ void Enemy::remove() {
 }
 
 void Enemy::attack() {
-    if ( !target_ ) return;
-    if ( !collider_ || !target_->get_collider() ) return;
+    if ( !collider_ || !target_ || !target_->get_collider() ) return;
 
     if (collider_->is_Colliding(target_->get_collider())) {
         if (states_ && target_->get_states()) {

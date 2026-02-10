@@ -28,11 +28,11 @@ public:
 
     virtual void update(float dt) override;
 
-    virtual void setRenderPosition(const glm::vec2& position) override;
+    virtual void set_render_position(const glm::vec2& position) override;
 
-    [[nodiscard]] virtual glm::vec2 getPosition() const override;
+    [[nodiscard]] virtual glm::vec2 get_position() const override;
 
-    void setPosition(const glm::vec2& position);
+    void set_position(const glm::vec2& position);
 
 
 };

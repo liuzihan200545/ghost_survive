@@ -7,12 +7,14 @@
 
 #include "core/actor.h"
 #include "affiliate/spriteAnim.h"
+#include "world/effect.h"
 
 class Player : public Actor {
     SpriteAnim* m_sprite_idle = nullptr;
     SpriteAnim* m_sprite_move  = nullptr;
     bool is_moving = false;
     Collider* collider_ = nullptr;
+    Effect* effect_ = nullptr;
 
 public:
     [[nodiscard]] Collider * get_collider() const {
@@ -36,6 +38,8 @@ public:
     void checkState();
 
     void changeState(bool is_moving);
+
+    void check_is_dead();
 
 };
 

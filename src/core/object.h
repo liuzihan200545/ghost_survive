@@ -12,7 +12,8 @@
 class Object {
 protected:
     Game& m_game = Game::get_instance();
-    std::vector<Object*> m_children;
+    std::vector<Object*> children_;
+    std::vector<Object*> object_to_add_;
     ObjectType m_type = ObjectType::NONE;
     bool m_is_active = true;
     bool need_remove_ = false;
@@ -45,6 +46,10 @@ public:
 
     virtual void addChild(Object* child);
     virtual void removeChild(Object* child);
+
+    void safe_add_child(Object* child) {
+        object_to_add_.push_back(child);
+    }
 
     ObjectType get_type() const {
         return m_type;
