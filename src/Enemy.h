@@ -25,10 +25,7 @@ class Enemy : public Actor {
     SpriteAnim* anim_die_ = nullptr;
     SpriteAnim* anim_current_ = nullptr;
 
-    Collider* collider_ = nullptr;
-
 public:
-
     static Enemy* addEnemyChild(Object* parent, const glm::vec2& pos, Player* target);
 
     void aim_target(Player* target);

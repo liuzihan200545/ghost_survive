@@ -26,13 +26,18 @@ void Enemy::aim_target(Player *target) {
 }
 
 void Enemy::checkState() {
-
+    State new_state;
+    if (states_->get_health() <= 0) {
+        new_state = State::DIE;
+    }
+    else if (states_->is_invisible()) { new_state = State::HURT; }
+    else { new_state = State::NORMAL; }
+    if (new_state != current_state_) {
+        changeState(new_state);
+    }
 }
 
 void Enemy::changeState(State new_state) {
-    if (new_state == current_state_) {
-        return;
-    }
 
     anim_current_ -> set_is_active(false);
 
@@ -71,6 +76,8 @@ void Enemy::init() {
     states_ = States::addStatesChild(this);
 
     set_type(ObjectType::ENEMY);
+
+
 }
 
 void Enemy::update(float dt) {
@@ -80,6 +87,8 @@ void Enemy::update(float dt) {
         move(dt);
         attack();
     }
+    checkState();
+    remove();
 }
 
 void Enemy::remove() {
