@@ -66,7 +66,7 @@ void Enemy::init() {
     anim_hurt_->set_is_active(false);
     anim_die_->set_is_active(false);
 
-    anim_hurt_->set_is_loop(false);
+    anim_hurt_->set_is_loop(true);
     anim_die_->set_is_loop(false);
 
     anim_current_ = anim_normal_;
