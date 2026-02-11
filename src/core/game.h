@@ -88,7 +88,7 @@ public:
 
     void drawBoundary(const glm::vec2& top_left, const glm::vec2& bottom_right, float boundary_width, SDL_FColor fcolor);
 
-    void renderTexture(const Texture& texture, const glm::vec2& position, const glm::vec2& size);
+    void renderTexture(const Texture& texture, const glm::vec2& position, const glm::vec2& size, const glm::vec2& mask = glm::vec2(1.0f));
 
     void renderCircle(const glm::vec2& position, const glm::vec2 &size, float alpha);
 

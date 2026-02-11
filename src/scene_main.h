@@ -7,12 +7,13 @@
 
 #include "core/scene.h"
 
-class Player; class Spawner; class UIMouse;
+class Player; class Spawner; class UIMouse; class HUDStates;
 
 class SceneMain : public Scene {
     Player *player_ = nullptr;
     Spawner *spawner_ = nullptr;
     UIMouse *ui_mouse_ = nullptr;
+    HUDStates *hud_states_ = nullptr;
 public:
     SceneMain() = default;
     virtual ~SceneMain() = default;

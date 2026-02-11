@@ -20,7 +20,7 @@ class Sprite : public ObjectAffiliate {
 protected:
     Texture m_texture;
     bool is_finished_ = false;
-
+    glm::vec2 percentage_ = glm::vec2(1.0f);   //决定图片原始区域的百分比
 public:
     [[nodiscard]] bool get_is_finished() const {
         return is_finished_;
@@ -63,6 +63,14 @@ public:
 
     [[nodiscard]]bool getFlip() const {
         return m_texture.is_flip;
+    }
+
+    glm::vec2 get_percentage() const {
+        return percentage_;
+    }
+
+    void set_percentage(const glm::vec2 &percentage) {
+        percentage_ = percentage;
     }
 
 };

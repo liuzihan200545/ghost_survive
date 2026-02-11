@@ -6,6 +6,7 @@
 #include "player.h"
 #include "screen/ui_mouse.h"
 #include "spawner.h"
+#include "screen/hud_states.h"
 #include "world/spell.h"
 
 void SceneMain::init() {
@@ -25,12 +26,7 @@ void SceneMain::init() {
 
     ui_mouse_ = UIMouse::addUIMouseChild(this,"assets/UI/29.png","assets/UI/30.png",1.0f,Anchor::CENTER);
 
-    /*auto enemy = new Enemy();
-    enemy->init();
-    enemy->set_position(m_world_size/2.0f + 200.f);
-    enemy->set_target(m_player);
-
-    Effect::addEffectChild(this,"assets/effect/184_3.png",m_world_size/2.0f + glm::vec2(200.f),1.5f, enemy);*/
+    hud_states_ = HUDStates::addHUDStatesChild(this,player_,glm::vec2(30.0f));
 }
 
 void SceneMain::handle_events(SDL_Event& event) {
