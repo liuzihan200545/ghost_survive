@@ -3,6 +3,8 @@
 //
 
 #include "Enemy.h"
+
+#include "affiliate/affiliate_bar.h"
 #include "affiliate/spriteAnim.h"
 #include "core/scene.h"
 #include "raw/states.h"
@@ -75,6 +77,9 @@ void Enemy::init() {
 
     states_ = States::addStatesChild(this);
 
+    auto size = anim_current_->get_size();
+    health_bar_ = AffiliateBar::addAffiliateBarChild(this,{size.x * 0.9 , 10},Anchor::BOTTOM_CENTER );
+    health_bar_->set_offset(health_bar_->get_offset()+glm::vec2(0, size.y / 2.0f));
     set_type(ObjectType::ENEMY);
 
 

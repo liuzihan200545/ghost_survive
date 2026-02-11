@@ -103,7 +103,6 @@ public:
     }
 
     void set_invisible(bool invisible) {
-        std::cout << "Set invisible: " << invisible << std::endl;
         is_invisible_ = invisible;
     }
 

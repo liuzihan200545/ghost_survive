@@ -83,7 +83,7 @@ public:
         return m_asset_store;
     }
 
-    // 工具函数
+    // 渲染函数
     void drawGrid(const glm::vec2& top_left, const glm::vec2& bottom_right, float grid_width, SDL_FColor fcolor);
 
     void drawBoundary(const glm::vec2& top_left, const glm::vec2& bottom_right, float boundary_width, SDL_FColor fcolor);
@@ -91,6 +91,8 @@ public:
     void renderTexture(const Texture& texture, const glm::vec2& position, const glm::vec2& size);
 
     void renderCircle(const glm::vec2& position, const glm::vec2 &size, float alpha);
+
+    void renderHBar(const glm::vec2& position, const glm::vec2& size, float percentage, SDL_FColor color);
 
     // 随机数函数
     float random_float(float min, float max) {

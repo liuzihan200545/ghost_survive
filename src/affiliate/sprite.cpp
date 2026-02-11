@@ -22,9 +22,9 @@ Sprite * Sprite::addSpriteChild(ObjectScreen *parent, const std::string &file_pa
 
 void Sprite::render() {
     ObjectAffiliate::render();
-    if (is_finished_ || !m_texture.texture || !m_parent) {
+    if (is_finished_ || !m_texture.texture || !parent_) {
         return;
     }
-    auto pos = m_parent->getRenderPosition() + this->m_offset;
+    auto pos = parent_->get_render_position() + this->m_offset;
     m_game.renderTexture(m_texture,pos,m_size);
 }

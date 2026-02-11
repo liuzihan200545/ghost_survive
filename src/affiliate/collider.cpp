@@ -6,8 +6,8 @@
 
 bool Collider::is_colliding(Collider *other) {
     if (type_ == Type::CIRCLE && other->type_ == Type::CIRCLE) {
-        auto point1 = m_parent->get_position()+ m_offset;
-        auto point2 = other->m_parent->get_position()+ other->m_offset;
+        auto point1 = parent_->get_position()+ m_offset;
+        auto point2 = other->parent_->get_position()+ other->m_offset;
 
         if (glm::length(point2 - point1) < (m_size.x + other->m_size.x) / 2.0f) {
             return true;
@@ -32,7 +32,7 @@ Collider * Collider::addColliderChild(ObjectScreen *parent, glm::vec2 size, Type
 void Collider::render() {
     ObjectAffiliate::render();
 #ifdef MY_DEBUG
-    auto pos = m_parent->getRenderPosition() + m_offset;
+    auto pos = parent_->get_render_position() + m_offset;
     m_game.renderCircle(pos,m_size,0.3);
 #endif
 

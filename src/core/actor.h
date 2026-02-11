@@ -7,13 +7,14 @@
 
 #include "object_world.h"
 
-class States;
+class States; class AffiliateBar;
 
 class Actor : public ObjectWorld{
 protected:
     glm::vec2 m_velocity = glm::vec2(0.0f);
     float m_max_speed = 100.0f;
     States *states_ = nullptr;
+    AffiliateBar *health_bar_ = nullptr;
 public:
     // getter and setter
     [[nodiscard]] glm::vec2 get_velocity() const { return m_velocity; }
@@ -35,6 +36,11 @@ public:
     // game play
     void take_damage(float damage) override;
     bool is_alive() const;
+
+    void update(float dt) override;
+
+private:
+    void update_health_bar();
 
 };
 

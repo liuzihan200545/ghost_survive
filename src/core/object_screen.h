@@ -16,7 +16,7 @@ public:
         m_type = ObjectType::OBJECT_SCREEN;
     }
 
-    glm::vec2 getRenderPosition() const {
+    glm::vec2 get_render_position() const {
         return m_render_position;
     }
 

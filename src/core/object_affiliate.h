@@ -9,7 +9,7 @@
 
 class ObjectAffiliate : public Object{
 protected:
-    ObjectScreen* m_parent = nullptr;
+    ObjectScreen* parent_ = nullptr;
     glm::vec2 m_offset = glm::vec2(0,0);
     glm::vec2 m_size = glm::vec2(0,0);
     Anchor anchor_ = Anchor::CENTER; // 锚点
@@ -20,11 +20,11 @@ public:
     // getter and setter
 
     [[nodiscard]] ObjectScreen * get_parent() const {
-        return m_parent;
+        return parent_;
     }
 
     void set_parent(ObjectScreen * const parent) {
-        this->m_parent = parent;
+        this->parent_ = parent;
     }
 
     [[nodiscard]] glm::vec2 get_offset() const {
